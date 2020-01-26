@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>OCR Tutorial Expanded</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <style>
+        .rectangle {
+
+            position: absolute;
+        }
+
+        .red-border {
+            border: 1px solid #FF0000;
+        }
+
+        .green-border {
+            border: 1px solid #00FF00;
+        }
+
+        .blue-border {
+            border: 1px solid #0000FF;
+        }
+
+        #result_image {
+            position: relative;
+        }
+
+
+        .thumb {
+            height: 75px;
+            border: 1px solid #000;
+            margin: 10px 5px 0 0;
+        }
+
+        .active {
+            border: 2px solid green;
+        }
+
+        div.blockUI.blockMsg.blockPage{
+            border:1px solid lightcoral!important;
+            border-radius:3px;
+        } 
+        
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+
+        <h2>OCR Scanner</h2>
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header"><b>Files are <u>NOT</u> uploaded to a server.</b> They are processed
+                        locally. </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input type="file" id="files" name="files[]" multiple />
+                            </div>
+
+                            <div class="col-md-9">
+                                <div>
+                                    <small>Click on thumbnail to process</small>
+                                </div>
+                                <output id="list"></output>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row" style="display:none">
+            <div class="col-md-12">
+                <canvas id="canvas"></canvas>
+
+                <!-- <img src="" id="cropped"> -->
+            </div>
+        </div>
+
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h3>Result</h3>
+                                <small>Hover over annotation boxes for more details <BR>(Does not work well when zoomed in or out)</small>
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-secondary" id="zoom_out"><i class="fa fa-minus"></i></button>
+                                <button class="btn btn-secondary" id="zoom_in"><i class="fa fa-plus"></i></button>
+                            </div>
+                            <div class="col-sm-6">
+                                <span>Confidence</span>
+                                <span class="green-border">Over 80%</span>
+                                <span class="blue-border">Over 65%</span>
+                                <span class="red-border">Under 65%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="result_image">
+
+                        </div>
+
+
+                        <!-- <div id="result"></div> -->
+
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <!-- <script src="tesseract/tesseract.js"></script> -->
+    <script src='https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js'></script>
+
+    <script src="../plugins/jquery.blockUI.js"></script>
+
+    <script src="./script.js">
+    </script>
+
+    <!-- <script src="./draw_rectangles.js"></script> -->
+</body>
+
+</html>
